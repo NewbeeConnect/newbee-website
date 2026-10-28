@@ -50,9 +50,11 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   turbopack: {
-    root: fs.existsSync(path.join(__dirname, "node_modules"))
-      ? path.dirname(fs.realpathSync(path.join(__dirname, "node_modules")))
-      : path.resolve(__dirname),
+    root:
+      __dirname.includes(".worktrees") &&
+      fs.existsSync(path.join(__dirname, "node_modules"))
+        ? path.dirname(fs.realpathSync(path.join(__dirname, "node_modules")))
+        : path.resolve(__dirname),
   },
   async headers() {
     return [

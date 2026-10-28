@@ -12,8 +12,8 @@
     "postinstall": "patch-package --error-on-fail && node scripts/security/check-braces.mjs",
     "check:security": "node scripts/security/check-braces.mjs",
     "ci": "npm run lint && npm run typecheck && npm run check:security && npm run test && npm run build",
-    "test:docker": "docker compose -f docker-compose.test.yml run --rm release-gate",
-    "test:release": "docker compose -f docker-compose.test.yml run --rm release-gate"
+    "test:docker": "docker compose -f docker-compose.test.yml run --rm -T release-gate",
+    "test:release": "docker compose -f docker-compose.test.yml run --rm -T release-gate"
   },
   "dependencies": {
     "next": "16.4.2",
