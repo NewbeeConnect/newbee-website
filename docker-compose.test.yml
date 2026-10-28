@@ -1,0 +1,30 @@
+services:
+  release-gate:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    image: newbee-marketing-test-runner:node22
+    working_dir: /workspace
+    environment:
+      CI: "true"
+    volumes:
+      - .:/workspace
+      - marketing_newbee_test_node_modules:/workspace/node_modules
+    tmpfs:
+      - /workspace/.next
+    command:
+      - bash
+      - -lc
+      - |
+        set -euo pipefail
+        LOCK_HASH=$$(sha256sum package-lock.json | awk '{print $$1}')
+        STAMP_FILE="node_modules/.docker-lock-hash"
+        if [ ! -f "$$STAMP_FILE" ] || [ "$$(cat "$$STAMP_FILE")" != "$$LOCK_HASH" ]; then
+          echo "📦 Installing Linux dependencies in Docker volume..."
+          npm ci
+          echo "$$LOCK_HASH" > "$$STAMP_FILE"
+        fi
+        npm run ci
+
+volumes:
+  marketing_newbee_test_node_modules:
