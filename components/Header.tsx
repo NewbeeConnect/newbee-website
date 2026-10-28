@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NewbeeLogoMark } from "./Marks";
+import { SITE } from "./site-config";
 
 export default function Header() {
   const pathname = usePathname();
@@ -57,7 +58,7 @@ export default function Header() {
 
         <div className="nk-header-actions">
           <a
-            href="https://app.newbeeapp.com"
+            href={SITE.webAppUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="nk-header-ghost"
@@ -136,7 +137,7 @@ export default function Header() {
               <div className="nk-mobile-drawer-label">Open Newbee</div>
               <div className="nk-mobile-drawer-apps">
                 <a
-                  href="https://app.newbeeapp.com"
+                  href={SITE.webAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}
@@ -145,7 +146,7 @@ export default function Header() {
                   <span>app.newbeeapp.com</span>
                 </a>
                 <a
-                  href="https://apps.apple.com/de/app/newbee-connect/id6474511885?l=en-GB"
+                  href={SITE.appStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}
@@ -154,7 +155,7 @@ export default function Header() {
                   <span>Download for iPhone</span>
                 </a>
                 <a
-                  href="https://play.google.com/store/apps/details?id=com.beeyondapps.newbee"
+                  href={SITE.playStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}

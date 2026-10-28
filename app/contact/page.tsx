@@ -3,13 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { HandDrawnUnderline } from "@/components/Marks";
-
-type InquiryType =
-  | "general"
-  | "city-lead"
-  | "expert"
-  | "event"
-  | "deletion";
+import {
+  buildContactMailtoUrl,
+  getInquiryRecipientEmail,
+  SITE,
+  type InquiryType,
+} from "@/lib/marketing";
 
 export default function ContactPage() {
   const [topic, setTopic] = useState<InquiryType>("general");
@@ -21,29 +20,13 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const targetEmail =
-      topic === "deletion"
-        ? "privacy@beeyondapps.com"
-        : "info@beeyondapps.com";
-
-    const subjectLabels: Record<InquiryType, string> = {
-      general: "Newbee Platform Support / General Inquiry",
-      "city-lead": "Newbee City Lead Application",
-      expert: "Newbee Verified Expert Onboarding",
-      event: "Newbee Event / Brand Partnership",
-      deletion: "Newbee GDPR Account & Data Deletion Request",
-    };
-
-    const subject = encodeURIComponent(
-      `[${subjectLabels[topic]}] ${name}${city ? ` (${city})` : ""}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nCity / Region: ${
-        city || "N/A"
-      }\nTopic: ${subjectLabels[topic]}\n\nMessage:\n${message}`
-    );
-
-    window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+    window.location.href = buildContactMailtoUrl({
+      topic,
+      name,
+      email,
+      city,
+      message,
+    });
     setSubmitted(true);
   };
 
@@ -74,28 +57,28 @@ export default function ContactPage() {
                 <strong>General, Partnerships &amp; Support:</strong>
                 <br />
                 <a
-                  href="mailto:info@beeyondapps.com"
+                  href={`mailto:${SITE.supportEmail}`}
                   style={{
                     textDecoration: "underline",
                     textDecorationColor: "#ffb72a",
                     fontWeight: 600,
                   }}
                 >
-                  info@beeyondapps.com
+                  {SITE.supportEmail}
                 </a>
               </p>
               <p className="nk-editorial-body">
                 <strong>Privacy &amp; Data Protection:</strong>
                 <br />
                 <a
-                  href="mailto:privacy@beeyondapps.com"
+                  href={`mailto:${SITE.privacyEmail}`}
                   style={{
                     textDecoration: "underline",
                     textDecorationColor: "#ffb72a",
                     fontWeight: 600,
                   }}
                 >
-                  privacy@beeyondapps.com
+                  {SITE.privacyEmail}
                 </a>
               </p>
             </div>
@@ -118,10 +101,10 @@ export default function ContactPage() {
                 also submit a formal erasure request using this form or by
                 emailing{" "}
                 <a
-                  href="mailto:privacy@beeyondapps.com"
+                  href={`mailto:${SITE.privacyEmail}`}
                   style={{ textDecoration: "underline", fontWeight: 600 }}
                 >
-                  privacy@beeyondapps.com
+                  {SITE.privacyEmail}
                 </a>
                 .
               </p>
@@ -146,7 +129,7 @@ export default function ContactPage() {
             <div className="nk-editorial-foot">
               Instagram:{" "}
               <a
-                href="https://www.instagram.com/newbeeappsocials/"
+                href={SITE.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ fontWeight: 700, color: "#111111" }}
@@ -258,15 +241,14 @@ export default function ContactPage() {
               <div className="nk-notice-coral">
                 <strong>Privacy Routing:</strong> Account and personal data
                 deletion requests are routed directly to our Data Protection
-                team at <strong>privacy@beeyondapps.com</strong>.
+                team at <strong>{SITE.privacyEmail}</strong>.
               </div>
             )}
 
             <button type="submit" className="nk-submit-btn">
               <span>
-                {topic === "deletion"
-                  ? "Compose Request to privacy@beeyondapps.com →"
-                  : "Compose Message to info@beeyondapps.com →"}
+                Compose {topic === "deletion" ? "Request" : "Message"} to{" "}
+                {getInquiryRecipientEmail(topic)} →
               </span>
             </button>
 
@@ -274,12 +256,7 @@ export default function ContactPage() {
               <div className="nk-notice">
                 Your email client has been opened with your pre-filled message.
                 You can also write directly to{" "}
-                <strong>
-                  {topic === "deletion"
-                    ? "privacy@beeyondapps.com"
-                    : "info@beeyondapps.com"}
-                </strong>
-                .
+                <strong>{getInquiryRecipientEmail(topic)}</strong>.
               </div>
             )}
           </form>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NewbeeLogoMark, NewbeeFooterWordmark } from "./Marks";
+import { SITE } from "./site-config";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -38,21 +39,21 @@ export default function Footer() {
           <div className="nk-footer-col-title">Get Newbee</div>
           <div className="nk-footer-links">
             <a
-              href="https://app.newbeeapp.com"
+              href={SITE.webAppUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
               Continue on Web (app.newbeeapp.com) ↗
             </a>
             <a
-              href="https://apps.apple.com/de/app/newbee-connect/id6474511885?l=en-GB"
+              href={SITE.appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
               Download on the App Store ↗
             </a>
             <a
-              href="https://play.google.com/store/apps/details?id=com.beeyondapps.newbee"
+              href={SITE.playStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -69,7 +70,7 @@ export default function Footer() {
             <Link href="/#events">02 · Organize Events</Link>
             <Link href="/#meet">03 · Meet New People</Link>
             <a
-              href="https://www.instagram.com/newbeeappsocials/"
+              href={SITE.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -84,7 +85,7 @@ export default function Footer() {
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/termsandconditions">Terms &amp; Conditions</Link>
             <Link href="/contact">Contact &amp; Account Deletion</Link>
-            <a href="mailto:info@beeyondapps.com">info@beeyondapps.com</a>
+            <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a>
           </div>
         </div>
       </div>

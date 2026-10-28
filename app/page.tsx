@@ -12,15 +12,7 @@ import {
   ArrowUpRightDarkBadge,
   HandDrawnUnderline,
 } from "@/components/Marks";
-import { SITE } from "@/components/site-config";
-
-const SLIDES = [
-  { id: "start", index: "00", label: "Overview", nextLabel: "01 · Ask Questions" },
-  { id: "ask", index: "01", label: "Ask Questions", nextLabel: "02 · Organize Events" },
-  { id: "events", index: "02", label: "Organize Events", nextLabel: "03 · Meet New People" },
-  { id: "meet", index: "03", label: "Meet New People", nextLabel: "Get Newbee" },
-  { id: "get-started", index: "04", label: "Get Newbee", nextLabel: null },
-] as const;
+import { SITE, SLIDES } from "@/lib/marketing";
 
 export default function HomePage() {
   const [activeIndex, setActiveIndex] = useState(0);
