@@ -1,22 +1,25 @@
-# Newbee Website (`newbeeapp.com`) — Status
+# Newbee Web Sitesi (`newbeeapp.com`) — Durum
 
-## Goal
-Minimal, 100% English slide-by-slide scroll-snapping website (`neoklinik.io` style) for Newbee (`newbeeapp.com` & `www.newbeeapp.com`).
+## Hedef
+Newbee için tamamen İngilizce, tam ekran slayt kaydırmalı tanıtım sitesi (`newbeeapp.com` ve `www.newbeeapp.com`) ile cihaza göre mağaza yönlendirmesi yapan indirme bağlantısı (`download.newbeeapp.com` ve `/download`).
 
-## Core Slogan
+## Ana Slogan
 > **"One-stop app to navigate all challenges of moving and living abroad."**
 
-## Completed (2026-10-23)
-- **Minimal Slide-Deck Architecture (`neoklinik.io` style):**
-  - Ported `components/scroll-controller.ts` for full-viewport slide snapping (`section[data-snap]`), keyboard navigation, left slide dots (`.nk-slide-dots`), top scroll progress bar (`.nk-scroll-progress`), and floating bottom-right `"Next · [Slide] ↓"` pill (`.nk-next-pill`).
-  - **Slide 00 (`#start`):** Hero with slogan `"One-stop app to navigate all challenges of moving and living abroad."`, primary CTAs (**Download Newbee** `/download` + **Continue on Web** `https://app.newbeeapp.com`), iPhone mockup (`/screens/home.png`), and out-of-phone pop-out cards.
-  - **Slide 01 (`#ask` — Ask Questions):** `Ask anything. Get real answers.` with `/screens/feed.png`, `/screens/feed-ask.png`, `/illustrations/ask-illustration.jpg`, and verified answer bubbles.
-  - **Slide 02 (`#events` — Organize Events):** `Host or join events in your city.` with `/screens/events.png`, real event photos (`/events/wine-tasting-group.jpg`, `/events/summer-picnic.jpg`), and `/illustrations/events-illustration.jpg`.
-  - **Slide 03 (`#meet` — Meet New People):** `Turn a new city into home.` with `/screens/people.png`, `/screens/communities.png`, `/events/sunday-brunch.jpg`, and `/illustrations/meet-illustration.jpg`.
-  - **Slide 04 (`#get-started`):** Closing slide with side-by-side **Download Newbee (iOS & Android)** and **Continue on Newbee Web (`app.newbeeapp.com`)** cards.
-- **Language & Copy Rules:**
-  - 100% English across the entire site (`lang="en"`), including `/privacy`, `/termsandconditions`, and `/contact`.
-  - Zero occurrences of `"diaspora"` anywhere in the repository.
+## Şu an
+- **Canlı (`main` `31e2e68`):** Vercel üzerinde yayında (`newbeeapp.com`, `www.newbeeapp.com`, `download.newbeeapp.com`).
+  - Ana sayfa (`/`): 5 slaytlık tam ekran kaydırmalı deneyim (`#start`, `#ask`, `#events`, `#meet`, `#get-started`).
+  - `/communities` → `/#meet`, `/businesses` → `/#ask`, `/about` → `/#start` sunucu yönlendirmeleri aktif.
+  - `/contact`, `/privacy` ve `/termsandconditions` sayfaları tamamen İngilizce (`lang="en"`).
+  - `/download` (`download.newbeeapp.com`): Kullanıcı cihazına göre iOS App Store, Google Play veya masaüstü web (`https://www.newbeeapp.com/#get-started` / `https://app.newbeeapp.com`) yönlendirmesi yapar.
+- **Geliştirme (`develop` `4efe7c5`, PR #7 — 2026-10-28):** 10/10 test ve yerel Docker yayın kapısı yükseltmesi tamamlandı:
+  - Ortak iş mantığı `lib/marketing.ts` modülüne taşındı.
+  - `lib/__tests__/marketing-and-download.test.ts` içinde 17 birim, yönlendirme ve güvenlik testi eklendi.
+  - `npm run ci` (`lint → typecheck → check:security → test → build`) ve yerel Docker yayın kapısı (`Dockerfile.test`, `docker-compose.test.yml`, `npm run test:docker`) kuruldu.
+- **Veritabanı ve sırlar:** Bu projede Supabase bağlantısı veya çalışma zamanı gizli anahtarı (secret) yoktur; tamamen bağımsız Next.js 16 uygulamasıdır.
 
-## Next Steps
-- Monitor live production deployment on `https://newbeeapp.com` and `https://www.newbeeapp.com`.
+## Sıradaki adımlar
+1. `develop` dalındaki 10/10 test ve belge güncellemelerini PR onayıyla `main` dalına birleştir.
+2. `newbeeapp.com` ve `download.newbeeapp.com` canlı yönlendirmelerini izlemeye devam et.
+
+Son güncelleme: 2026-10-28

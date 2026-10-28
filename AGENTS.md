@@ -20,3 +20,5 @@ dosyaya değil.
 Çalışma kuralları `CLAUDE.md` dosyasında. **Onu da oku** — araç ne olursa
 olsun kurallar aynı.
 <!-- ORTAK-HAFIZA:SON -->
+
+Güncel durum: STATUS.md.
