@@ -10,7 +10,7 @@ Official website for **Newbee** (`newbeeapp.com` / `www.newbeeapp.com`) and the 
 - `/communities` — Server redirect to `/#meet`
 - `/businesses` — Server redirect to `/#ask`
 - `/about` — Server redirect to `/#start`
-- `/contact` — Contact hub (`info@beeyondapps.com` for general/City Lead/Expert/event inquiries, `privacy@beeyondapps.com` for GDPR/KVKK account & data deletion requests, Instagram `@newbeeappsocials`)
+- `/contact` — Contact hub (`info@beeyondapps.com` for general/City Lead/Expert/event inquiries, `info@beeyondapps.com` for GDPR/KVKK account & data deletion requests, Instagram `@newbeeappsocials`)
 - `/privacy` — English (`EN`) Privacy Policy & Data Protection Notice (`privacy/en`, `kvkk/en` in `data/legal-pages.json`)
 - `/termsandconditions` — English (`EN`) Terms & Conditions (`terms/en` in `data/legal-pages.json`)
 - `/download` (`download.newbeeapp.com` / `marketing.newbeeapp.com`) — Device-aware 302 redirect (`detectPlatformFromUserAgent` in `lib/marketing.ts`):

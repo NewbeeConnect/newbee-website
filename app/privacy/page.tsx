@@ -42,8 +42,8 @@ export default function PrivacyPage() {
           <div>
             <div className="nk-legal-meta-label">PRIVACY &amp; DPO CONTACT</div>
             <div className="nk-legal-meta-val">
-              <a href="mailto:privacy@beeyondapps.com">
-                privacy@beeyondapps.com
+              <a href="mailto:info@beeyondapps.com">
+                info@beeyondapps.com
               </a>
             </div>
           </div>
