@@ -23,7 +23,7 @@ export default function ContactPage() {
     e.preventDefault();
     const targetEmail =
       topic === "deletion"
-        ? "privacy@beeyondapps.com"
+        ? "info@beeyondapps.com"
         : "info@beeyondapps.com";
 
     const subjectLabels: Record<InquiryType, string> = {
@@ -88,14 +88,14 @@ export default function ContactPage() {
                 <strong>Privacy &amp; Data Protection:</strong>
                 <br />
                 <a
-                  href="mailto:privacy@beeyondapps.com"
+                  href="mailto:info@beeyondapps.com"
                   style={{
                     textDecoration: "underline",
                     textDecorationColor: "#ffb72a",
                     fontWeight: 600,
                   }}
                 >
-                  privacy@beeyondapps.com
+                  info@beeyondapps.com
                 </a>
               </p>
             </div>
@@ -118,10 +118,10 @@ export default function ContactPage() {
                 also submit a formal erasure request using this form or by
                 emailing{" "}
                 <a
-                  href="mailto:privacy@beeyondapps.com"
+                  href="mailto:info@beeyondapps.com"
                   style={{ textDecoration: "underline", fontWeight: 600 }}
                 >
-                  privacy@beeyondapps.com
+                  info@beeyondapps.com
                 </a>
                 .
               </p>
@@ -258,14 +258,14 @@ export default function ContactPage() {
               <div className="nk-notice-coral">
                 <strong>Privacy Routing:</strong> Account and personal data
                 deletion requests are routed directly to our Data Protection
-                team at <strong>privacy@beeyondapps.com</strong>.
+                team at <strong>info@beeyondapps.com</strong>.
               </div>
             )}
 
             <button type="submit" className="nk-submit-btn">
               <span>
                 {topic === "deletion"
-                  ? "Compose Request to privacy@beeyondapps.com →"
+                  ? "Compose Request to info@beeyondapps.com →"
                   : "Compose Message to info@beeyondapps.com →"}
               </span>
             </button>
@@ -276,7 +276,7 @@ export default function ContactPage() {
                 You can also write directly to{" "}
                 <strong>
                   {topic === "deletion"
-                    ? "privacy@beeyondapps.com"
+                    ? "info@beeyondapps.com"
                     : "info@beeyondapps.com"}
                 </strong>
                 .
