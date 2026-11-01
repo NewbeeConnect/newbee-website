@@ -13,7 +13,7 @@ This repository serves two roles on the same Next.js 16 application (with zero S
    - Routes (`app/` & `lib/marketing.ts`):
      - `/` (`app/page.tsx`) — 5-slide scroll-snapping landing experience (`#start`, `#ask`, `#events`, `#meet`, `#get-started`) powered by `lib/marketing.ts` (`SLIDES`) and `components/scroll-controller.ts` (keyboard navigation, `.nk-slide-dots`, `.nk-scroll-progress`, `.nk-next-pill`).
      - `/communities`, `/businesses`, `/about` — Server redirects (`redirect()`) to `/#meet`, `/#ask`, and `/#start` respectively.
-     - `/contact` (`app/contact/page.tsx`) — Contact hub (`info@beeyondapps.com` / `privacy@beeyondapps.com` mailto builder `buildContactMailtoUrl` in `lib/marketing.ts`, Instagram `@newbeeappsocials`, GDPR/KVKK account & data deletion requests).
+     - `/contact` (`app/contact/page.tsx`) — Contact hub (`info@beeyondapps.com` / `info@beeyondapps.com` mailto builder `buildContactMailtoUrl` in `lib/marketing.ts`, Instagram `@newbeeappsocials`, GDPR/KVKK account & data deletion requests).
      - `/privacy` & `/termsandconditions` — English (`EN`) legal pages powered by `data/legal-pages.json` (`privacy/en`, `kvkk/en`, `terms/en`).
    - Permanent 308 redirects in `next.config.ts` map all legacy Wix URLs (`/home`, `/new-about`, `/blog`, `/groups`, `/forum`, `/terms`, etc.) to their modern equivalents.
 

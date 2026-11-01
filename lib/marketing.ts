@@ -10,7 +10,7 @@ export const SITE = {
     "https://play.google.com/store/apps/details?id=com.beeyondapps.newbee",
   instagramUrl: "https://www.instagram.com/newbeeappsocials/",
   supportEmail: "info@beeyondapps.com",
-  privacyEmail: "privacy@beeyondapps.com",
+  privacyEmail: "info@beeyondapps.com",
 } as const;
 
 export type PlatformTarget = "ios" | "android" | "web";

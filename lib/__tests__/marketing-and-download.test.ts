@@ -191,8 +191,8 @@ describe("SLIDES & validateSlideDefinitions", () => {
 });
 
 describe("Contact inquiry routing & buildContactMailtoUrl", () => {
-  it("routes GDPR/KVKK deletion inquiries to privacy@beeyondapps.com and others to info@beeyondapps.com", () => {
-    assert.equal(getInquiryRecipientEmail("deletion"), "privacy@beeyondapps.com");
+  it("routes every inquiry, including GDPR/KVKK deletion, to info@beeyondapps.com", () => {
+    assert.equal(getInquiryRecipientEmail("deletion"), "info@beeyondapps.com");
     assert.equal(getInquiryRecipientEmail("general"), "info@beeyondapps.com");
     assert.equal(getInquiryRecipientEmail("city-lead"), "info@beeyondapps.com");
     assert.equal(getInquiryRecipientEmail("expert"), "info@beeyondapps.com");
@@ -208,7 +208,7 @@ describe("Contact inquiry routing & buildContactMailtoUrl", () => {
       message: "Please delete my account and personal data.",
     });
 
-    assert.ok(deletionMailto.startsWith("mailto:privacy@beeyondapps.com?"));
+    assert.ok(deletionMailto.startsWith("mailto:info@beeyondapps.com?"));
     const deletionParams = new URLSearchParams(deletionMailto.split("?")[1]);
     assert.equal(
       deletionParams.get("subject"),
