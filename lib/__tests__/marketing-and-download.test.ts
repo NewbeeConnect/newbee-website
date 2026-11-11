@@ -390,7 +390,8 @@ describe("Routes, SEO (robots & sitemap), and metadata contracts", () => {
       "app/communities/page.tsx",
       "app/sigorta/layout.tsx",
       "app/sigorta/page.tsx",
-      "public/og/sigorta-kampanya.jpg",
+      "public/og/sigorta-kampanya-v3.jpg",
+      "public/partners/allianz-white.svg",
     ];
 
     for (const relPath of requiredRoutes) {
