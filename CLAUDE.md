@@ -31,7 +31,7 @@ This repository serves two roles on the same Next.js 16 application (with zero S
    - Commits and PRs must be authored by **NewbeeConnect** (`newbeeconnect@gmail.com`), pinned per repo via `hesap.py`.
    - Use direct `git` commands; never run `gh auth switch` and never include AI attribution trailers (`Co-Authored-By`, `Generated with Claude Code`, etc.).
 2. **Product & copy rules:**
-   - 100% English (`lang="en"`), zero occurrences of `"diaspora"` anywhere in the repository.
+   - 100% English (`lang="en"`), zero occurrences of `"diaspora"` anywhere in the repository. **One exception:** `/sigorta` (`app/sigorta/`, `lib/campaign.ts`) is a Turkish partner campaign page (insurance advisor Uğur Tahmaz, live since 2026-11-11, `noindex`). It posts leads to the Newbee `submit-campaign-lead` edge function, the only runtime Supabase call in this repo (no key, no secret); that host is the only addition to `connect-src`. It lives here and not on app.newbeeapp.com because the installed Android app claims every app.newbeeapp.com link.
    - Do not promote a job board or career module (parked in Sep 2026).
    - Never refer to City Leads as "volunteers" / "gönüllü".
 
