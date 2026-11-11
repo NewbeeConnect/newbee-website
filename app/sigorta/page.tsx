@@ -96,7 +96,7 @@ export default function SigortaCampaignPage() {
         <div className={styles.intro}>
         {/* eslint-disable-next-line @next/next/no-img-element -- static 1200x630 poster, same file as the link preview */}
         <img
-          src="/og/sigorta-kampanya-v2.jpg"
+          src="/og/sigorta-kampanya-v3.jpg"
           alt="Newbee sigorta kampanyası: kaskoda %20'ye, diğer sigortalarda %10'a varan indirim"
           width={1200}
           height={630}
@@ -108,7 +108,7 @@ export default function SigortaCampaignPage() {
         </h1>
         <p className={styles.lead}>
           Kaskoda %20&apos;ye, diğer sigortalarda %10&apos;a varan indirim. Formu doldurun, Allianz
-          sigorta uzmanı Uğur Tahmaz sizi arasın.
+          sigorta uzmanlarımız sizi arasın.
         </p>
         </div>
 
@@ -129,7 +129,7 @@ export default function SigortaCampaignPage() {
               <div style={{ fontSize: 44 }} aria-hidden="true">✓</div>
               <h2 style={{ fontSize: 22, fontWeight: 700, marginTop: 8 }}>Teşekkürler!</h2>
               <p style={{ marginTop: 8, color: "var(--nk-muted)" }}>
-                Bilgileriniz alındı. Uğur Tahmaz en kısa sürede sizinle iletişime geçecek.
+                Bilgileriniz alındı. Allianz sigorta uzmanlarımız en kısa sürede sizinle iletişime geçecek.
               </p>
             </div>
           ) : (
@@ -177,7 +177,7 @@ export default function SigortaCampaignPage() {
                 <input id="sg-consent" type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}
                   aria-invalid={invalid === "consent"} style={{ width: 20, height: 20, marginTop: 2, flexShrink: 0 }} />
                 <span>
-                  Bilgilerimin bana teklif sunulması için sigorta uzmanı Uğur Tahmaz ({AGENCY.name}, {AGENCY.street},{" "}
+                  Bilgilerimin bana teklif sunulması için Allianz sigorta uzmanlarımız ({AGENCY.name}, {AGENCY.street},{" "}
                   {AGENCY.city}) ile paylaşılmasına ve benimle
                   telefon veya e-posta ile iletişime geçilmesine izin veriyorum. Bu iznimi istediğim zaman
                   info@beeyondapps.com adresine yazarak geri alabilirim.{" "}
@@ -215,8 +215,9 @@ export default function SigortaCampaignPage() {
             lineHeight: 1.5,
           }}
         >
-          <div style={{ fontSize: 13, letterSpacing: "0.12em", color: YELLOW, fontWeight: 700 }}>SİGORTA UZMANI</div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginTop: 4 }}>Uğur Tahmaz</div>
+          <div style={{ fontSize: 13, letterSpacing: "0.12em", color: YELLOW, fontWeight: 700 }}>SİGORTA UZMANLARIMIZ</div>
+          {/* eslint-disable-next-line @next/next/no-img-element -- small static SVG wordmark */}
+          <img src="/partners/allianz-white.svg" alt="Allianz" width={140} height={35} style={{ display: "block", height: 30, width: "auto", marginTop: 10 }} />
           <div style={{ marginTop: 6, fontSize: 15, opacity: 0.92 }}>
             {AGENCY.name}
             <br />
