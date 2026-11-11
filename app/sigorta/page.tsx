@@ -5,6 +5,7 @@ import {
   CAMPAIGN_LEAD_ENDPOINT,
   INSURANCE_CAMPAIGN_ID,
   INSURANCE_INTERESTS,
+  AGENCY,
   LEAD_ERRORS,
   toLeadField,
   type LeadField,
@@ -95,7 +96,7 @@ export default function SigortaCampaignPage() {
       <div style={{ maxWidth: 560, margin: "0 auto" }}>
         {/* eslint-disable-next-line @next/next/no-img-element -- static 1200x630 poster, same file as the link preview */}
         <img
-          src="/og/sigorta-kampanya.jpg"
+          src="/og/sigorta-kampanya-v2.jpg"
           alt="Newbee sigorta kampanyası: kaskoda %20'ye, diğer sigortalarda %10'a varan indirim"
           width={1200}
           height={630}
@@ -106,8 +107,8 @@ export default function SigortaCampaignPage() {
           Newbee üyelerine özel sigorta kampanyası
         </h1>
         <p style={{ marginTop: 10, fontSize: 18, opacity: 0.92, lineHeight: 1.45 }}>
-          Kaskoda %20&apos;ye, diğer sigortalarda %10&apos;a varan indirim. Formu doldurun, sigorta
-          danışmanı Uğur Tahmaz sizi arasın.
+          Kaskoda %20&apos;ye, diğer sigortalarda %10&apos;a varan indirim. Formu doldurun, Allianz
+          sigorta uzmanı Uğur Tahmaz sizi arasın.
         </p>
 
         <div
@@ -173,7 +174,8 @@ export default function SigortaCampaignPage() {
                 <input id="sg-consent" type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}
                   aria-invalid={invalid === "consent"} style={{ width: 20, height: 20, marginTop: 2, flexShrink: 0 }} />
                 <span>
-                  Bilgilerimin bana teklif sunulması için sigorta danışmanı Uğur Tahmaz ile paylaşılmasına ve benimle
+                  Bilgilerimin bana teklif sunulması için sigorta uzmanı Uğur Tahmaz ({AGENCY.name}, {AGENCY.street},{" "}
+                  {AGENCY.city}) ile paylaşılmasına ve benimle
                   telefon veya e-posta ile iletişime geçilmesine izin veriyorum. Bu iznimi istediğim zaman
                   info@beeyondapps.com adresine yazarak geri alabilirim.{" "}
                   <a href="/privacy" style={{ textDecoration: "underline" }}>Gizlilik politikası</a>
@@ -194,10 +196,29 @@ export default function SigortaCampaignPage() {
               </button>
               <p style={{ fontSize: 12, color: "var(--nk-muted)", textAlign: "center", lineHeight: 1.5 }}>
                 Bilgileriniz yalnız bu kampanya için kullanılır. İndirim oranları üst sınırdır; size özel teklif
-                danışmanla görüşmede netleşir.
+                uzmanla görüşmede netleşir.
               </p>
             </form>
           )}
+        </div>
+
+        <div
+          style={{
+            marginTop: 16,
+            background: "rgba(251,243,228,0.08)",
+            border: "1px solid rgba(251,243,228,0.25)",
+            borderRadius: 18,
+            padding: "18px 20px",
+            lineHeight: 1.5,
+          }}
+        >
+          <div style={{ fontSize: 13, letterSpacing: "0.12em", color: YELLOW, fontWeight: 700 }}>SİGORTA UZMANI</div>
+          <div style={{ fontSize: 22, fontWeight: 800, marginTop: 4 }}>Uğur Tahmaz</div>
+          <div style={{ marginTop: 6, fontSize: 15, opacity: 0.92 }}>
+            {AGENCY.name}
+            <br />
+            {AGENCY.street}, {AGENCY.city}
+          </div>
         </div>
       </div>
     </section>
