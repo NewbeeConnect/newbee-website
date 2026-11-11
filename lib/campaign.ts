@@ -6,6 +6,13 @@ export const CAMPAIGN_LEAD_ENDPOINT =
 
 export const INSURANCE_CAMPAIGN_ID = "insurance-2026-11";
 
+/** The partner's agency, named on the page and in the consent text. */
+export const AGENCY = {
+  name: "Allianz Generalvertretung Solz und Zimmermann",
+  street: "Brückenstr. 43",
+  city: "60594 Frankfurt am Main",
+} as const;
+
 export const INSURANCE_INTERESTS = [
   { value: "kasko", label: "Kasko / araç" },
   { value: "health", label: "Sağlık" },
