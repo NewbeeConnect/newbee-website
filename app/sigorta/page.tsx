@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import styles from "./sigorta.module.css";
 import {
   CAMPAIGN_LEAD_ENDPOINT,
   INSURANCE_CAMPAIGN_ID,
@@ -13,8 +14,6 @@ import {
 
 type Status = "idle" | "sending" | "done" | "error" | "rate";
 
-const BLUE = "#133fb8";
-const CREAM = "#fbf3e4";
 const YELLOW = "#fbb62d";
 
 const inputStyle: React.CSSProperties = {
@@ -92,28 +91,32 @@ export default function SigortaCampaignPage() {
     ) : null;
 
   return (
-    <section style={{ background: BLUE, color: CREAM, padding: "96px 16px 56px" }}>
-      <div style={{ maxWidth: 560, margin: "0 auto" }}>
+    <section className={styles.section}>
+      <div className={styles.layout}>
+        <div className={styles.intro}>
         {/* eslint-disable-next-line @next/next/no-img-element -- static 1200x630 poster, same file as the link preview */}
         <img
           src="/og/sigorta-kampanya-v2.jpg"
           alt="Newbee sigorta kampanyası: kaskoda %20'ye, diğer sigortalarda %10'a varan indirim"
           width={1200}
           height={630}
-          style={{ width: "100%", height: "auto", borderRadius: 18, display: "block" }}
+          className={styles.poster}
         />
 
-        <h1 style={{ marginTop: 28, fontSize: 32, lineHeight: 1.1, fontWeight: 800, letterSpacing: "-0.02em" }}>
+        <h1 className={styles.title}>
           Newbee üyelerine özel sigorta kampanyası
         </h1>
-        <p style={{ marginTop: 10, fontSize: 18, opacity: 0.92, lineHeight: 1.45 }}>
+        <p className={styles.lead}>
           Kaskoda %20&apos;ye, diğer sigortalarda %10&apos;a varan indirim. Formu doldurun, Allianz
           sigorta uzmanı Uğur Tahmaz sizi arasın.
         </p>
+        </div>
+
+        <div className={styles.side}>
 
         <div
           style={{
-            marginTop: 24,
+            marginTop: 0,
             background: "var(--nk-bg)",
             color: "var(--nk-ink)",
             borderRadius: 18,
@@ -219,6 +222,7 @@ export default function SigortaCampaignPage() {
             <br />
             {AGENCY.street}, {AGENCY.city}
           </div>
+        </div>
         </div>
       </div>
     </section>
