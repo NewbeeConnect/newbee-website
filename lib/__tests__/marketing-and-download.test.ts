@@ -388,6 +388,9 @@ describe("Routes, SEO (robots & sitemap), and metadata contracts", () => {
       "app/about/page.tsx",
       "app/businesses/page.tsx",
       "app/communities/page.tsx",
+      "app/sigorta/layout.tsx",
+      "app/sigorta/page.tsx",
+      "public/og/sigorta-kampanya.jpg",
     ];
 
     for (const relPath of requiredRoutes) {
@@ -520,6 +523,15 @@ describe("Marketing site static security contracts", () => {
       externalBlankLinksCount >= 10,
       `Expected at least 10 external target="_blank" links across TSX files (found ${externalBlankLinksCount})`
     );
+  });
+
+  it("lets only the campaign lead endpoint through connect-src", () => {
+    const nextConfigSource = fs.readFileSync(path.join(ROOT_DIR, "next.config.ts"), "utf8");
+    const connect = nextConfigSource.match(/"connect-src ([^"]*)"/);
+    assert.ok(connect, "next.config.ts must set connect-src");
+    assert.equal(connect[1], "'self' https://ccuiumdacqwsfhfxsjdm.supabase.co");
+    const campaignSource = fs.readFileSync(path.join(ROOT_DIR, "lib/campaign.ts"), "utf8");
+    assert.match(campaignSource, /https:\/\/ccuiumdacqwsfhfxsjdm\.supabase\.co\/functions\/v1\/submit-campaign-lead/);
   });
 
   it("enforces strict HTTP security headers and disables X-Powered-By in next.config.ts", () => {
