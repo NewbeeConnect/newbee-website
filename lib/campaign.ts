@@ -13,13 +13,34 @@ export const AGENCY = {
   city: "60594 Frankfurt am Main",
 } as const;
 
+// Most-requested insurance types in Germany. Keys must match `CAMPAIGNS` in the
+// Newbee repo (supabase/functions/_shared/campaign-lead.ts). "other" is not in
+// this list: the form shows it as its own tick box with a free-text field.
 export const INSURANCE_INTERESTS = [
-  { value: "kasko", label: "Kasko / araç" },
-  { value: "health", label: "Sağlık" },
-  { value: "home", label: "Konut / ev eşyası" },
-  { value: "liability", label: "Sorumluluk (Haftpflicht)" },
-  { value: "life", label: "Hayat / emeklilik" },
-  { value: "other", label: "Diğer" },
+  { value: "kasko", label: "Araç / kasko (Kfz)" },
+  { value: "private_health", label: "Özel sağlık sigortası (PKV)" },
+  { value: "health_extra", label: "Tamamlayıcı sağlık / diş (Zusatz)" },
+  { value: "liability", label: "Özel sorumluluk (Privathaftpflicht)" },
+  { value: "household", label: "Ev eşyası (Hausrat)" },
+  { value: "building", label: "Bina / konut (Wohngebäude)" },
+  { value: "legal", label: "Hukuki koruma (Rechtsschutz)" },
+  { value: "disability", label: "İş göremezlik (Berufsunfähigkeit)" },
+  { value: "life", label: "Hayat sigortası (Risikoleben)" },
+  { value: "pension", label: "Emeklilik / birikim (Rente)" },
+  { value: "accident", label: "Ferdi kaza (Unfall)" },
+  { value: "travel", label: "Seyahat sağlık (Auslandsreise)" },
+  { value: "pet", label: "Evcil hayvan (Tier)" },
+] as const;
+
+export const INTEREST_OTHER_MAX = 200;
+
+/** Examples shown under the "1 year of free Newbee events" bonus. */
+export const BONUS_EVENTS = [
+  "Kitap kulübü buluşmaları",
+  "Kutu oyunu (board game) akşamları",
+  "Günübirlik geziler",
+  "Restoran buluşmaları",
+  "Spor etkinlikleri",
 ] as const;
 
 export type LeadField = "name" | "email" | "phone" | "consent";

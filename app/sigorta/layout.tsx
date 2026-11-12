@@ -8,9 +8,9 @@ import type { Metadata } from "next";
 // app.newbeeapp.com link and its store build has no such page.
 const TITLE = "Newbee'ye özel sigorta kampanyası: Kaskoda %20'ye varan indirim";
 const DESCRIPTION =
-  "Diğer sigortalarda %10'a varan indirim. Formu doldurun, Allianz sigorta uzmanlarımız sizi arasın.";
+  "Diğer sigortalarda %10'a varan indirim, hediye olarak 1 yıl ücretsiz Newbee etkinlikleri. Formu doldurun, Allianz sigorta uzmanlarımız sizi arasın.";
 const IMAGE = {
-  url: "https://www.newbeeapp.com/og/sigorta-kampanya-v3.jpg",
+  url: "https://www.newbeeapp.com/og/sigorta-kampanya-v4.jpg",
   width: 1200,
   height: 630,
   type: "image/jpeg",

@@ -6,6 +6,8 @@ import {
   CAMPAIGN_LEAD_ENDPOINT,
   INSURANCE_CAMPAIGN_ID,
   INSURANCE_INTERESTS,
+  INTEREST_OTHER_MAX,
+  BONUS_EVENTS,
   AGENCY,
   LEAD_ERRORS,
   toLeadField,
@@ -34,7 +36,12 @@ export default function SigortaCampaignPage() {
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [interest, setInterest] = useState("");
+  const [interests, setInterests] = useState<string[]>([]);
+  const [otherChecked, setOtherChecked] = useState(false);
+  const [interestOther, setInterestOther] = useState("");
+
+  const toggleInterest = (value: string) =>
+    setInterests((prev) => (prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]));
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<Status>("idle");
@@ -57,7 +64,8 @@ export default function SigortaCampaignPage() {
           fullName,
           email,
           phone,
-          interest: interest || undefined,
+          interests: otherChecked ? [...interests, "other"] : interests,
+          interestOther: otherChecked ? interestOther.trim() || undefined : undefined,
           consent,
           website,
         }),
@@ -96,7 +104,7 @@ export default function SigortaCampaignPage() {
         <div className={styles.intro}>
         {/* eslint-disable-next-line @next/next/no-img-element -- static 1200x630 poster, same file as the link preview */}
         <img
-          src="/og/sigorta-kampanya-v3.jpg"
+          src="/og/sigorta-kampanya-v4.jpg"
           alt="Newbee sigorta kampanyası: kaskoda %20'ye, diğer sigortalarda %10'a varan indirim"
           width={1200}
           height={630}
@@ -110,6 +118,22 @@ export default function SigortaCampaignPage() {
           Kaskoda %20&apos;ye, diğer sigortalarda %10&apos;a varan indirim. Formu doldurun, Allianz
           sigorta uzmanlarımız sizi arasın.
         </p>
+
+        <div className={styles.bonus}>
+          <div className={styles.bonusTitle}>Hediye: 1 yıl ücretsiz Newbee etkinlikleri</div>
+          <p>
+            Sigortanızı bu form üzerinden yaptırırsanız, 1 yıl boyunca Newbee&apos;nin düzenlediği
+            etkinliklere ücretsiz katılırsınız:
+          </p>
+          <ul>
+            {BONUS_EVENTS.map((e) => (
+              <li key={e}>{e}</li>
+            ))}
+          </ul>
+          <p className={styles.bonusNote}>
+            Hakkınız, sigorta sözleşmeniz yapıldıktan sonra Newbee hesabınıza tanımlanır.
+          </p>
+        </div>
         </div>
 
         <div className={styles.side}>
@@ -157,15 +181,33 @@ export default function SigortaCampaignPage() {
                 {fieldError("email")}
               </div>
 
-              <div>
-                <label htmlFor="sg-interest" style={labelStyle}>Hangi sigortayla ilgileniyorsunuz? (isteğe bağlı)</label>
-                <select id="sg-interest" value={interest} onChange={(e) => setInterest(e.target.value)} style={inputStyle}>
-                  <option value="">Seçin</option>
+              <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+                <legend style={labelStyle}>Hangi sigortalarla ilgileniyorsunuz? (birden fazla seçebilirsiniz)</legend>
+                <div className={styles.interests}>
                   {INSURANCE_INTERESTS.map((o) => (
-                    <option key={o.value} value={o.value}>{o.label}</option>
+                    <label key={o.value} className={styles.interest}>
+                      <input type="checkbox" checked={interests.includes(o.value)} onChange={() => toggleInterest(o.value)} />
+                      <span>{o.label}</span>
+                    </label>
                   ))}
-                </select>
-              </div>
+                  <label className={styles.interest}>
+                    <input type="checkbox" checked={otherChecked} onChange={(e) => setOtherChecked(e.target.checked)} />
+                    <span>Diğer</span>
+                  </label>
+                </div>
+                {otherChecked && (
+                  <input
+                    id="sg-interest-other"
+                    aria-label="Diğer sigorta türü"
+                    placeholder="Hangi sigorta? Örn. tekne, işyeri, motosiklet"
+                    maxLength={INTEREST_OTHER_MAX}
+                    value={interestOther}
+                    onChange={(e) => setInterestOther(e.target.value)}
+                    style={inputStyle}
+                    autoFocus
+                  />
+                )}
+              </fieldset>
 
               {/* Honeypot: hidden from people, filled by naive bots. */}
               <div aria-hidden="true" style={{ position: "absolute", left: -9999, width: 1, height: 1, overflow: "hidden" }}>
