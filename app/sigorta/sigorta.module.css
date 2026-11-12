@@ -38,6 +38,40 @@
   line-height: 1.45;
 }
 
+/* "1 year of free Newbee events" bonus. */
+.bonus {
+  margin-top: 20px;
+  padding: 16px 18px;
+  border: 2px solid #fbb62d;
+  border-radius: 16px;
+  background: rgba(251, 182, 45, 0.14);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.bonusTitle {
+  font-weight: 800;
+  font-size: 19px;
+  color: #fbb62d;
+  margin-bottom: 6px;
+}
+
+.bonus ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.bonus li {
+  margin: 2px 0;
+}
+
+.bonusNote {
+  margin-top: 10px;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
 /* Insurance type tick boxes: one column on phones, two from 480 px. */
 .interests {
   display: grid;

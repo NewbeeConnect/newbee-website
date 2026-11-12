@@ -7,6 +7,7 @@ import {
   INSURANCE_CAMPAIGN_ID,
   INSURANCE_INTERESTS,
   INTEREST_OTHER_MAX,
+  BONUS_EVENTS,
   AGENCY,
   LEAD_ERRORS,
   toLeadField,
@@ -103,7 +104,7 @@ export default function SigortaCampaignPage() {
         <div className={styles.intro}>
         {/* eslint-disable-next-line @next/next/no-img-element -- static 1200x630 poster, same file as the link preview */}
         <img
-          src="/og/sigorta-kampanya-v3.jpg"
+          src="/og/sigorta-kampanya-v4.jpg"
           alt="Newbee sigorta kampanyası: kaskoda %20'ye, diğer sigortalarda %10'a varan indirim"
           width={1200}
           height={630}
@@ -117,6 +118,22 @@ export default function SigortaCampaignPage() {
           Kaskoda %20&apos;ye, diğer sigortalarda %10&apos;a varan indirim. Formu doldurun, Allianz
           sigorta uzmanlarımız sizi arasın.
         </p>
+
+        <div className={styles.bonus}>
+          <div className={styles.bonusTitle}>Hediye: 1 yıl ücretsiz Newbee etkinlikleri</div>
+          <p>
+            Sigortanızı bu form üzerinden yaptırırsanız, 1 yıl boyunca Newbee&apos;nin düzenlediği
+            etkinliklere ücretsiz katılırsınız:
+          </p>
+          <ul>
+            {BONUS_EVENTS.map((e) => (
+              <li key={e}>{e}</li>
+            ))}
+          </ul>
+          <p className={styles.bonusNote}>
+            Hakkınız, sigorta sözleşmeniz yapıldıktan sonra Newbee hesabınıza tanımlanır.
+          </p>
+        </div>
         </div>
 
         <div className={styles.side}>

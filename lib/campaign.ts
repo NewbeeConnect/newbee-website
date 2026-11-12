@@ -34,6 +34,15 @@ export const INSURANCE_INTERESTS = [
 
 export const INTEREST_OTHER_MAX = 200;
 
+/** Examples shown under the "1 year of free Newbee events" bonus. */
+export const BONUS_EVENTS = [
+  "Kitap kulübü buluşmaları",
+  "Kutu oyunu (board game) akşamları",
+  "Günübirlik geziler",
+  "Restoran buluşmaları",
+  "Spor etkinlikleri",
+] as const;
+
 export type LeadField = "name" | "email" | "phone" | "consent";
 
 export const LEAD_ERRORS: Record<LeadField | "generic" | "rate", string> = {
