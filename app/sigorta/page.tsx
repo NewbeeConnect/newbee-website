@@ -6,6 +6,7 @@ import {
   CAMPAIGN_LEAD_ENDPOINT,
   INSURANCE_CAMPAIGN_ID,
   INSURANCE_INTERESTS,
+  INTEREST_OTHER_MAX,
   AGENCY,
   LEAD_ERRORS,
   toLeadField,
@@ -34,7 +35,12 @@ export default function SigortaCampaignPage() {
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [interest, setInterest] = useState("");
+  const [interests, setInterests] = useState<string[]>([]);
+  const [otherChecked, setOtherChecked] = useState(false);
+  const [interestOther, setInterestOther] = useState("");
+
+  const toggleInterest = (value: string) =>
+    setInterests((prev) => (prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]));
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<Status>("idle");
@@ -57,7 +63,8 @@ export default function SigortaCampaignPage() {
           fullName,
           email,
           phone,
-          interest: interest || undefined,
+          interests: otherChecked ? [...interests, "other"] : interests,
+          interestOther: otherChecked ? interestOther.trim() || undefined : undefined,
           consent,
           website,
         }),
@@ -157,15 +164,33 @@ export default function SigortaCampaignPage() {
                 {fieldError("email")}
               </div>
 
-              <div>
-                <label htmlFor="sg-interest" style={labelStyle}>Hangi sigortayla ilgileniyorsunuz? (isteğe bağlı)</label>
-                <select id="sg-interest" value={interest} onChange={(e) => setInterest(e.target.value)} style={inputStyle}>
-                  <option value="">Seçin</option>
+              <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+                <legend style={labelStyle}>Hangi sigortalarla ilgileniyorsunuz? (birden fazla seçebilirsiniz)</legend>
+                <div className={styles.interests}>
                   {INSURANCE_INTERESTS.map((o) => (
-                    <option key={o.value} value={o.value}>{o.label}</option>
+                    <label key={o.value} className={styles.interest}>
+                      <input type="checkbox" checked={interests.includes(o.value)} onChange={() => toggleInterest(o.value)} />
+                      <span>{o.label}</span>
+                    </label>
                   ))}
-                </select>
-              </div>
+                  <label className={styles.interest}>
+                    <input type="checkbox" checked={otherChecked} onChange={(e) => setOtherChecked(e.target.checked)} />
+                    <span>Diğer</span>
+                  </label>
+                </div>
+                {otherChecked && (
+                  <input
+                    id="sg-interest-other"
+                    aria-label="Diğer sigorta türü"
+                    placeholder="Hangi sigorta? Örn. tekne, işyeri, motosiklet"
+                    maxLength={INTEREST_OTHER_MAX}
+                    value={interestOther}
+                    onChange={(e) => setInterestOther(e.target.value)}
+                    style={inputStyle}
+                    autoFocus
+                  />
+                )}
+              </fieldset>
 
               {/* Honeypot: hidden from people, filled by naive bots. */}
               <div aria-hidden="true" style={{ position: "absolute", left: -9999, width: 1, height: 1, overflow: "hidden" }}>
